@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Vim学习总结 | Robin&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Robin">
+    
+    
+
+    <meta name="description" content="VimVim是类vi编辑器中最优秀的一个，代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用，和Emacs并列成为类Unix系统用户最喜欢的文本编辑器。 背景最近正尝试把Linux作为主要使用的操作系统，因此学习vim非常必要。 Vim的模式Vim有6种基本模式和5种派生模式 基本模式：  普通模式(Normal mode) 插入模式(Insert mode) 可视模式(Vis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim学习总结 | Robin&#39;s Blog">
+<meta property="og:url" content="www.geekrobin.com/2017/07/09/Vim学习总结及常用命令/index.html">
+<meta property="og:site_name" content="Robin&#39;s Blog">
+<meta property="og:description" content="VimVim是类vi编辑器中最优秀的一个，代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用，和Emacs并列成为类Unix系统用户最喜欢的文本编辑器。 背景最近正尝试把Linux作为主要使用的操作系统，因此学习vim非常必要。 Vim的模式Vim有6种基本模式和5种派生模式 基本模式：  普通模式(Normal mode) 插入模式(Insert mode) 可视模式(Vis">
+<meta property="og:image" content="/images/nerdtree.png">
+<meta property="og:updated_time" content="2017-07-09T08:57:32.575Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vim学习总结 | Robin&#39;s Blog">
+<meta name="twitter:description" content="VimVim是类vi编辑器中最优秀的一个，代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用，和Emacs并列成为类Unix系统用户最喜欢的文本编辑器。 背景最近正尝试把Linux作为主要使用的操作系统，因此学习vim非常必要。 Vim的模式Vim有6种基本模式和5种派生模式 基本模式：  普通模式(Normal mode) 插入模式(Insert mode) 可视模式(Vis">
+<meta name="twitter:image" content="/images/nerdtree.png">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/images/logo.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">Robin&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          life &amp;&amp; technology &amp;&amp; code
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">Blog</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">About</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">Blogroll</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/Robin1998" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Vim学习总结</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-07-09" class="post-meta__date date">2017-07-09</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/Linux/">Linux</a>
+            </font>
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h1 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h1><p>Vim是类vi编辑器中最优秀的一个，代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用，和Emacs并列成为类Unix系统用户最喜欢的文本编辑器。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近正尝试把Linux作为主要使用的操作系统，因此学习vim非常必要。</p>
+<h2 id="Vim的模式"><a href="#Vim的模式" class="headerlink" title="Vim的模式"></a>Vim的模式</h2><p>Vim有6种基本模式和5种派生模式</p>
+<p>基本模式：</p>
+<ul>
+<li>普通模式(Normal mode)</li>
+<li>插入模式(Insert mode)</li>
+<li>可视模式(Visual mode)</li>
+<li>选择模式(Select mode)</li>
+<li>命令行模式(Command line mode)</li>
+<li>Ex模式(Ex mode)</li>
+</ul>
+<h4 id="平时主要使用的只有普通模式、插入模式和命令行模式"><a href="#平时主要使用的只有普通模式、插入模式和命令行模式" class="headerlink" title="平时主要使用的只有普通模式、插入模式和命令行模式"></a>平时主要使用的只有普通模式、插入模式和命令行模式</h4><p>命令行中通过vim命令运行vim默认进入普通模式，处于插入模式和命令行模式时只要按<code>Esc</code>或者<code>Ctrl+[</code>。普通模式中按<code>i</code>(插入)或<code>a</code>(附加）键都可以进入插入模式，普通模式中按<code>:</code>进入命令行模式。命令行模式中输入<code>wq</code>回车后保存并推出vim。</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="一、普通模式"><a href="#一、普通模式" class="headerlink" title="一、普通模式"></a>一、普通模式</h3><h4 id="1-1-移动光标"><a href="#1-1-移动光标" class="headerlink" title="1.1 移动光标"></a>1.1 移动光标</h4><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>h</code></td>
+<td>左</td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td>右（小写L）</td>
+</tr>
+<tr>
+<td><code>j</code></td>
+<td>下</td>
+</tr>
+<tr>
+<td><code>k</code></td>
+<td>上</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td>移动到下一个单词</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>移动到上一个单词</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-2-删除文本命令"><a href="#1-2-删除文本命令" class="headerlink" title="1.2 删除文本命令"></a>1.2 删除文本命令</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td>删除游标所在的字符</td>
+</tr>
+<tr>
+<td><code>X</code></td>
+<td>删除游标所在前一个字符</td>
+</tr>
+<tr>
+<td><code>Delete</code></td>
+<td>同<code>x</code></td>
+</tr>
+<tr>
+<td><code>dd</code></td>
+<td>删除整行</td>
+</tr>
+<tr>
+<td><code>dw</code></td>
+<td>删除一个单词（不适用中文）</td>
+</tr>
+<tr>
+<td><code>d$</code>或<code>D</code></td>
+<td>删除至行尾</td>
+</tr>
+<tr>
+<td><code>d^</code></td>
+<td>删除至行首</td>
+</tr>
+<tr>
+<td><code>dG</code></td>
+<td>删除到文档结尾处</td>
+</tr>
+<tr>
+<td><code>d1G</code></td>
+<td>删至文档首部</td>
+</tr>
+</tbody>
+</table>
+<p>除此之外，你还可以在命令之前加上数字，表示一次删除多行，如：<br><code>2dd</code>表示一次删除2行</p>
+<h4 id="1-3-行内跳转"><a href="#1-3-行内跳转" class="headerlink" title="1.3 行内跳转"></a>1.3 行内跳转</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>w</code></td>
+<td>到下一个单词的开头</td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td>到下一个单词的结尾</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>到前一个单词的开头</td>
+</tr>
+<tr>
+<td><code>ge</code></td>
+<td>到前一个单词的结尾</td>
+</tr>
+<tr>
+<td><code>0</code>或<code>^</code></td>
+<td>到行头</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>到行尾</td>
+</tr>
+<tr>
+<td><code>f&amp;lt;字母&amp;gt;</code></td>
+<td>向后搜索&lt;字母&gt;并跳转到第一个匹配的位置(非常实用)</td>
+</tr>
+<tr>
+<td><code>F&amp;lt;字母&amp;gt;</code></td>
+<td>向前搜索&lt;字母&gt;并跳转到第一个匹配的位置</td>
+</tr>
+<tr>
+<td><code>t&amp;lt;字母&amp;gt;</code></td>
+<td>向后搜索&lt;字母&gt;并跳转到第一个匹配位置之前的一个字母(不常用)</td>
+</tr>
+<tr>
+<td><code>T&amp;lt;字母&amp;gt;</code></td>
+<td>向前搜索&lt;字母&gt;并跳转到第一个匹配位置之后的一个字母(不常用)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-4-行间跳转"><a href="#1-4-行间跳转" class="headerlink" title="1.4 行间跳转"></a>1.4 行间跳转</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nG</code>(n Shift+g)</td>
+<td>游标移动到第 n 行<strong>(如果默认没有显示行号，请先进入命令模式，输入<code>:set nu</code>以显示行号)</strong></td>
+</tr>
+<tr>
+<td><code>gg</code></td>
+<td>游标移动到到第一行</td>
+</tr>
+<tr>
+<td><code>G</code>(Shift+g)</td>
+<td>到最后一行</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-5-复制粘贴"><a href="#1-5-复制粘贴" class="headerlink" title="1.5 复制粘贴"></a>1.5 复制粘贴</h4><ul>
+<li><p>普通模式中使用<code>y</code>复制</p>
+<ul>
+<li>普通模式中，<code>yy</code>复制游标所在的整行（<code>3yy</code>表示复制3行）</li>
+<li>普通模式中，<code>y^</code> 复制至行首，或<code>y0</code>。不含光标所在处字符。</li>
+<li>普通模式中，<code>y$</code> 复制至行尾。含光标所在处字符。</li>
+<li>普通模式中，<code>yw</code> 复制一个单词。</li>
+<li>普通模式中，<code>y2w</code> 复制两个单词。</li>
+<li>普通模式中，<code>yG</code> 复制至文本末。</li>
+<li>普通模式中，<code>y1G</code> 复制至文本开头。</li>
+</ul>
+</li>
+<li><p>普通模式中使用<code>p</code>粘贴</p>
+<ul>
+<li>普通模式中，<code>p</code>(小写)代表粘贴至光标后（下）</li>
+<li>普通模式中，<code>P</code>(大写)代表粘贴至光标前（上）</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-6-剪切粘贴"><a href="#1-6-剪切粘贴" class="headerlink" title="1.6 剪切粘贴"></a>1.6 剪切粘贴</h4><p>其实<code>dd</code>删除命令就是剪切，你每次<code>dd</code>删除文档内容后，便可以使用<code>p</code>来粘贴，也这一点可以让我们实现一个很爽快的功能——交换上下行：<br><code>ddp</code>,就这么简单，即实现了快速交换光标所在行与它下面的行</p>
+<h3 id="二、插入模式"><a href="#二、插入模式" class="headerlink" title="二、插入模式"></a>二、插入模式</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>i</code></td>
+<td>在当前光标处进行编辑</td>
+</tr>
+<tr>
+<td><code>I</code></td>
+<td>在行首插入</td>
+</tr>
+<tr>
+<td><code>A</code></td>
+<td>在行末插入</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td>在光标后插入编辑</td>
+</tr>
+<tr>
+<td><code>o</code></td>
+<td>在当前行后插入一个新行</td>
+</tr>
+<tr>
+<td><code>O</code></td>
+<td>在当前行前插入一个新行</td>
+</tr>
+<tr>
+<td><code>cw</code></td>
+<td>替换从光标所在位置后到一个单词结尾的字符</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三、命令行模式"><a href="#三、命令行模式" class="headerlink" title="三、命令行模式"></a>三、命令行模式</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:q!</code></td>
+<td>强制退出，不保存</td>
+</tr>
+<tr>
+<td><code>:q</code></td>
+<td>退出</td>
+</tr>
+<tr>
+<td><code>:wq!</code></td>
+<td>强制保存并退出</td>
+</tr>
+<tr>
+<td><code>:w &amp;lt;文件路径&amp;gt;</code></td>
+<td>另存为</td>
+</tr>
+<tr>
+<td><code>:saveas 文件路径</code></td>
+<td>另存为</td>
+</tr>
+<tr>
+<td><code>:x</code></td>
+<td>保存并退出 </td>
+</tr>
+<tr>
+<td><code>:wq</code></td>
+<td>保存并退出</td>
+</tr>
+</tbody>
+</table>
+<h4 id="视窗操作"><a href="#视窗操作" class="headerlink" title="视窗操作"></a>视窗操作</h4><p>vim可以在一个界面里打开多个窗口进行编辑，这些编辑窗口称为vim的视窗。<br>打开方法有很多种，例如可以使用在命令行模式下输入<code>:new</code> 打开一个新的vim视窗，并进入视窗编辑一个新文件，除了<code>:new</code>命令，下述列举的多种方法也可以在命令模式或普通模式下打开新的视窗：</p>
+<ul>
+<li>命令行模式下输入<code>:sp 1.txt</code> 打开新的水平分屏视窗来编辑1.txt</li>
+<li>命令行模式下输入<code>:vsp 2.txt</code> 打开新的垂直分屏视窗来编辑2.txt</li>
+<li>普通模式下<code>Ctrl-w s</code> 将当前窗口分割成两个水平的窗口</li>
+<li>普通模式下<code>Ctrl-w v</code> 将当前窗口分割成两个垂直的窗口</li>
+<li>普通模式下<code>Ctrl-w q</code>  即 :q 结束分割出来的视窗。如果在新视窗中有输入需要使用强制符！即:q!</li>
+<li>普通模式下<code>Ctrl-w o</code> 打开一个视窗并且隐藏之前的所有视窗</li>
+<li>普通模式下<code>Ctrl-w j</code> 移至下面视窗</li>
+<li>普通模式下<code>Ctrl-w k</code> 移至上面视窗</li>
+<li>普通模式下<code>Ctrl-w h</code> 移至左边视窗</li>
+<li>普通模式下<code>Ctrl-w l</code> 移至右边视窗</li>
+<li>普通模式下<code>Ctrl-w J</code> 将当前视窗移至下面</li>
+<li>普通模式下<code>Ctrl-w K</code> 将当前视窗移至上面</li>
+<li>普通模式下<code>Ctrl-w H</code> 将当前视窗移至左边</li>
+<li>普通模式下<code>Ctrl-w L</code> 将当前视窗移至右边</li>
+<li>普通模式下<code>Ctrl-w -</code> 减小视窗的高度</li>
+<li>普通模式下<code>Ctrl-w +</code> 增加视窗的高度</li>
+</ul>
+<h2 id="Vim插件的配置"><a href="#Vim插件的配置" class="headerlink" title="Vim插件的配置"></a>Vim插件的配置</h2><p>因为目前还未适应Vim的用法，因此还没打算将其作为主要编辑器，也只配置了一个目录树插件。</p>
+<h3 id="目录树"><a href="#目录树" class="headerlink" title="目录树"></a>目录树</h3><p>目录树可以很清晰得看到文档层次，操作方便。</p>
+<p>首先从官方源clone，因此必须先安装好git<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/scrooloose/nerdtree</div></pre></td></tr></table></figure></p>
+<p>下载好压缩包后，解压<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar xzvf NERD_tree.tar.gz</div></pre></td></tr></table></figure></p>
+<p>然后进入用户目录下的.vim目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd ~/.vim</div></pre></td></tr></table></figure></p>
+<p>如果没安装其他插件是什么都没有的，这时把解压好的文件都copy进去就配置好了。</p>
+<p>之后打开vim默认是不启动的，需要输入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:NERDTree</div></pre></td></tr></table></figure></p>
+<p>目录树就会成功启动了</p>
+<p><img src="/images/nerdtree.png" alt="NERDTree"></p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
